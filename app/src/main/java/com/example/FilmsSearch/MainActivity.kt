@@ -11,20 +11,21 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         initMenuButtons()
     }
+
     private fun initMenuButtons(){
-        button_menu.setOnClickListener(){
+        button_menu.setOnClickListener {
             Toast.makeText(this,"Меню",Toast.LENGTH_SHORT).show()
         }
-        button_favorites.setOnClickListener(){
+        button_favorites.setOnClickListener {
             Toast.makeText(this,"Избранное",Toast.LENGTH_SHORT).show()
         }
-        button_watch_later.setOnClickListener(){
+        button_watch_later.setOnClickListener {
             Toast.makeText(this,"Посмотреть позже",Toast.LENGTH_SHORT).show()
         }
-        button_selections.setOnClickListener(){
+        button_selections.setOnClickListener {
             Toast.makeText(this,"Подборки",Toast.LENGTH_SHORT).show()
         }
-        button_settings.setOnClickListener(){
+        button_settings.setOnClickListener {
             Toast.makeText(this,"Настройки",Toast.LENGTH_SHORT).show()
         }
     }
