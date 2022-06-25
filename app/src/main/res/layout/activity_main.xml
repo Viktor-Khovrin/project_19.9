@@ -9,27 +9,109 @@
     <FrameLayout
         android:id="@+id/frameLayout1"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:background="#E91E63"
+        android:minHeight="75dp"
+        android:layout_height="wrap_content"
+        android:background="#FFFFFF"
         app:layout_constraintTop_toTopOf="parent">
+        <androidx.cardview.widget.CardView
+            android:id="@+id/top_linear1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            app:cardCornerRadius="15dp"
+            android:elevation="5dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
 
+        <ImageView
+            android:layout_width="150dp"
+            android:layout_height="200dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/poster_1"
+            android:layout_weight="1"/>
+        <ImageView
+            android:layout_width="150dp"
+            android:layout_height="200dp"
+            android:src="@drawable/poster_2"
+            android:scaleType="centerCrop"
+            android:layout_weight="1"/>
+        <ImageView
+            android:layout_width="150dp"
+            android:layout_height="200dp"
+            android:src="@drawable/poster_3"
+            android:scaleType="centerCrop"
+            android:layout_weight="1"/>
+        </LinearLayout>
+        </androidx.cardview.widget.CardView>
     </FrameLayout>
+
+    <TextView
+        android:id="@+id/top_textView1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:autoLink="web"
+        android:clickable="true"
+        android:text="@string/top_text1"
+        android:textSize="18sp"
+        app:layout_constraintTop_toBottomOf="@id/frameLayout1"
+        tools:ignore="TouchTargetSizeCheck"
+        android:focusable="true" />
 
     <LinearLayout
         android:id="@+id/linearLayout1"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        app:layout_constraintHeight_default="wrap"
+        android:layout_height="wrap_content"
         android:layout_marginStart="55dp"
-        android:layout_marginTop="100dp"
         android:layout_marginEnd="55dp"
-        android:layout_marginBottom="100dp"
-        android:background="@color/purple_200"
+
+        android:background="@drawable/background_drawable01"
         android:orientation="vertical"
-        app:flow_verticalAlign="bottom"
-        app:layout_constraintBottom_toTopOf="@id/frameLayout2"
+        app:layout_constraintBottom_toTopOf="@+id/frameLayout2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/frameLayout1">
+
+        <Button
+            android:id="@+id/button_menu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Меню"
+            android:textColor="@android:color/white"
+            android:background="?selectableItemBackgroundBorderless"/>
+
+        <Button
+            android:id="@+id/button_favorites"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Избранное"
+            android:textColor="@android:color/white"
+            android:background="?selectableItemBackgroundBorderless"/>
+        <Button
+            android:id="@+id/button_watch_later"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Посмотреть позже"
+            android:textColor="@android:color/white"
+            android:background="?selectableItemBackgroundBorderless"/>
+        <Button
+            android:id="@+id/button_selections"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Подборки"
+            android:textColor="@android:color/white"
+            android:background="?selectableItemBackgroundBorderless"/>
+        <Button
+            android:id="@+id/button_settings"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Настройки"
+            android:textColor="@android:color/white"
+            android:background="?selectableItemBackgroundBorderless"/>
+
 
     </LinearLayout>
 
