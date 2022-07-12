@@ -3,18 +3,23 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/123/AndroidStudioProjects/FilmsSearch/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.18" />
         <entry key="..\:/Users/123/AndroidStudioProjects/FilmsSearch/app/src/main/res/drawable/background_drawable01.xml" value="0.1945" />
         <entry key="..\:/Users/123/AndroidStudioProjects/FilmsSearch/app/src/main/res/drawable/ic_baseline_menu.xml" value="0.199" />
         <entry key="..\:/Users/123/AndroidStudioProjects/FilmsSearch/app/src/main/res/drawable/ic_baseline_settings.xml" value="0.199" />
+        <entry key="..\:/Users/123/AndroidStudioProjects/FilmsSearch/app/src/main/res/drawable/ic_baseline_share_24.xml" value="0.18" />
         <entry key="..\:/Users/123/AndroidStudioProjects/FilmsSearch/app/src/main/res/drawable/ic_baseline_star.xml" value="0.199" />
         <entry key="..\:/Users/123/AndroidStudioProjects/FilmsSearch/app/src/main/res/drawable/ic_baseline_video_library.xml" value="0.199" />
         <entry key="..\:/Users/123/AndroidStudioProjects/FilmsSearch/app/src/main/res/drawable/ic_baseline_watch_later.xml" value="0.199" />
         <entry key="..\:/Users/123/AndroidStudioProjects/FilmsSearch/app/src/main/res/drawable/ic_round_menu.xml" value="0.199" />
-        <entry key="..\:/Users/123/AndroidStudioProjects/FilmsSearch/app/src/main/res/layout/activity_main.xml" value="0.18" />
+        <entry key="..\:/Users/123/AndroidStudioProjects/FilmsSearch/app/src/main/res/layout/activity_details.xml" value="0.25" />
+        <entry key="..\:/Users/123/AndroidStudioProjects/FilmsSearch/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Users/123/AndroidStudioProjects/FilmsSearch/app/src/main/res/layout/film_item.xml" value="0.1" />
         <entry key="..\:/Users/123/AndroidStudioProjects/FilmsSearch/app/src/main/res/menu/navigation.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/123/AndroidStudioProjects/FilmsSearch/app/src/main/res/menu/navigation_menu.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/123/AndroidStudioProjects/FilmsSearch/app/src/main/res/menu/settings.xml" value="0.203125" />
         <entry key="..\:/Users/123/AndroidStudioProjects/FilmsSearch/app/src/main/res/menu/toolbar_menu.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/123/AndroidStudioProjects/FilmsSearch/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.159" />
       </map>
     </option>
   </component>
