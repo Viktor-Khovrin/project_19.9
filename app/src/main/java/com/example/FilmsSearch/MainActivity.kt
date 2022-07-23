@@ -1,10 +1,8 @@
 package com.example.FilmsSearch
 
-import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -18,46 +16,71 @@ class MainActivity : AppCompatActivity() {
         Film("Deliverance", R.drawable.deliverance, "Intent on seeing the Cahulawassee River before it's dammed and turned into a lake, outdoor fanatic Lewis Medlock takes his friends on a canoeing trip they'll never forget into the dangerous American back-country"),
         Film("Goodfellas", R.drawable.goodfellas, "The story of Henry Hill and his life in the mob, covering his relationship with his wife Karen Hill and his mob partners Jimmy Conway and Tommy DeVito in the Italian-American crime syndicate"),
     )
+
+    private var time_pressed = 0L
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         initNavigation()
         initMenuButtons()
-        initRecyclerView()
+        supportFragmentManager
+            .beginTransaction()
+            .add(R.id.fragment_placeholder, HomeFragment())
+            .commit()
     }
 
-    private fun initRecyclerView() {
-        main_recycler.apply {
-            filmsAdapter = FilmListRecyclerAdapter(object : FilmListRecyclerAdapter.OnItemClickListener{
-                override fun click(film: Film) {
-                    val bundle = Bundle()
-                    bundle.putParcelable("film", film)
-                    val intent = Intent(this@MainActivity, DetailsActivity::class.java)
-                    intent.putExtras(bundle)
-                    startActivity(intent)
-                }
-            })
-            adapter = filmsAdapter
-            layoutManager = LinearLayoutManager(this@MainActivity)
-            val decorator = TopSpacingItemDecoration(8)
-            addItemDecoration(decorator)
-        }
-
-        filmsAdapter.addItems(filmsDataBase)
+    fun launchDetailsFragment(film: Film) {
+        val bundle = Bundle()
+        bundle.putParcelable("film", film)
+        val fragment = DetailsFragment()
+        fragment.arguments = bundle
+        supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.fragment_placeholder, fragment)
+            .addToBackStack(null)
+            .commit()
     }
 
-    private lateinit var filmsAdapter: FilmListRecyclerAdapter
     private fun initNavigation(){
-        topAppBar.setOnMenuItemClickListener {
+        bottom_navigation.setOnNavigationItemSelectedListener{
             when (it.itemId) {
-                R.id.settings -> {
-                    Toast.makeText(this, "Настройки", Toast.LENGTH_SHORT).show()
+                R.id.favorites -> {
+                    Toast.makeText(this,R.string.menu_favorites_title, Toast.LENGTH_SHORT).show()
+                    true
+                }
+                R.id.selections -> {
+                    Toast.makeText(this,R.string.menu_selections_title, Toast.LENGTH_SHORT).show()
+                    true
+                }
+                R.id.watch_later -> {
+                    Toast.makeText(this,R.string.menu_watch_later_title, Toast.LENGTH_SHORT).show()
                     true
                 }
                 else -> false
             }
         }
     }
+
+    override fun onBackPressed(){
+        if (supportFragmentManager.backStackEntryCount == 0){
+            if (time_pressed + BACK_PRESSED_TIMEOUT > System.currentTimeMillis()){
+                super.onBackPressed()
+                finish()
+            }else {
+                Toast.makeText(this, R.string.on_back_pressed, Toast.LENGTH_SHORT).show()
+                time_pressed = System.currentTimeMillis()
+            }
+        }else{
+            super.onBackPressed()
+        }
+
+    }
+
+    companion object{
+        const val BACK_PRESSED_TIMEOUT = 2000
+    }
+
     private fun initMenuButtons(){
 /*
         button_menu.setOnClickListener {
@@ -76,4 +99,5 @@ class MainActivity : AppCompatActivity() {
             Toast.makeText(this,"Настройки",Toast.LENGTH_SHORT).show()
         }*/
     }
+
 }
