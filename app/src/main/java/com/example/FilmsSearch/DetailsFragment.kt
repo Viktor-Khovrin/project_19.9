@@ -1,6 +1,7 @@
 package com.example.FilmsSearch
 
 import android.content.Intent
+
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +11,7 @@ import kotlinx.android.synthetic.main.fragment_details.*
 
 class DetailsFragment : Fragment() {
     private lateinit var film: Film
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
