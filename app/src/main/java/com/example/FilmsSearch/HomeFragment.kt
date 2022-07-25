@@ -43,7 +43,7 @@ class HomeFragment : Fragment() {
             })
             adapter = filmsAdapter
             layoutManager = LinearLayoutManager(requireContext())
-            val decorator = TopSpacingItemDecoration(8)
+            val decorator = TopSpacingItemDecoration(DECORATION_PADDING)
             addItemDecoration(decorator)
         }
 
@@ -59,17 +59,20 @@ class HomeFragment : Fragment() {
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
-                if(newText!!.isEmpty()){
+                if(newText?.isEmpty() == true){
                     filmsAdapter.addItems(filmsDataBase)
                     return true
                 }
                 val result = filmsDataBase.filter {
-                    it.title.toLowerCase(Locale.getDefault()).contains(newText.toLowerCase(Locale.getDefault()))
+                    it.title.toLowerCase(Locale.getDefault()).contains(newText?.toLowerCase(Locale.getDefault())
+                        .toString())
                 }
                 filmsAdapter.addItems(result)
                 return true
             }
         })
     }
-
+    companion object{
+        private const val DECORATION_PADDING = 8
+    }
 }

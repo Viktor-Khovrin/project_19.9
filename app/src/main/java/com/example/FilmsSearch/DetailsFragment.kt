@@ -24,7 +24,7 @@ class DetailsFragment : Fragment() {
     }
 
     private fun setDetailedContent() {
-        val film = arguments?.get("film") as Film
+        val film = arguments?.get(FILM_FIELD_NAME) as Film
         details_toolbar.title = film.title
         details_poster.setImageResource(film.poster)
         details_description.text = film.description
@@ -52,5 +52,7 @@ class DetailsFragment : Fragment() {
             startActivity(Intent.createChooser(intent, "Share to:"))
         }
     }
-
+    companion object{
+        private const val FILM_FIELD_NAME = "film"
+    }
 }
