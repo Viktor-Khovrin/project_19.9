@@ -1,6 +1,7 @@
 package com.example.FilmsSearch
 
 import android.content.Intent
+
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +11,7 @@ import kotlinx.android.synthetic.main.fragment_details.*
 
 class DetailsFragment : Fragment() {
     private lateinit var film: Film
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -30,16 +32,16 @@ class DetailsFragment : Fragment() {
         details_description.text = film.description
 
         details_fab_favorites.setImageResource(
-            if (!film.isInFavorites) R.drawable.ic_baseline_favorite_24
-            else R.drawable.ic_baseline_favorite_border_24
+            if (!film.isInFavorites) R.drawable.ic_baseline_favorite_border_24
+            else R.drawable.ic_baseline_favorite_24
         )
 
         details_fab_favorites.setOnClickListener{
             if (!film.isInFavorites){
-                details_fab_favorites.setImageResource(R.drawable.ic_baseline_favorite_24)
+                details_fab_favorites.setImageResource(R.drawable.ic_baseline_favorite_border_24)
                 film.isInFavorites = true
             }else{
-                details_fab_favorites.setImageResource(R.drawable.ic_baseline_favorite_border_24)
+                details_fab_favorites.setImageResource(R.drawable.ic_baseline_favorite_24)
                 film.isInFavorites = false
             }
         }
