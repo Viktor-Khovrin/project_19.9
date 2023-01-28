@@ -32,16 +32,16 @@ class DetailsFragment : Fragment() {
         details_description.text = film.description
 
         details_fab_favorites.setImageResource(
-            if (!film.isInFavorites) R.drawable.ic_baseline_favorite_24
-            else R.drawable.ic_baseline_favorite_border_24
+            if (!film.isInFavorites) R.drawable.ic_baseline_favorite_border_24
+            else R.drawable.ic_baseline_favorite_24
         )
 
         details_fab_favorites.setOnClickListener{
             if (!film.isInFavorites){
-                details_fab_favorites.setImageResource(R.drawable.ic_baseline_favorite_24)
+                details_fab_favorites.setImageResource(R.drawable.ic_baseline_favorite_border_24)
                 film.isInFavorites = true
             }else{
-                details_fab_favorites.setImageResource(R.drawable.ic_baseline_favorite_border_24)
+                details_fab_favorites.setImageResource(R.drawable.ic_baseline_favorite_24)
                 film.isInFavorites = false
             }
         }

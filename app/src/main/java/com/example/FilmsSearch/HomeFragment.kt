@@ -65,7 +65,8 @@ class HomeFragment : Fragment() {
                     return true
                 }
                 val result = filmsDataBase.filter {
-                    it.title.toLowerCase(Locale.getDefault()).contains(newText?.toLowerCase(Locale.getDefault())
+                    it.title.lowercase(Locale.getDefault()).contains(
+                        newText?.lowercase(Locale.getDefault())
                         .toString())
                 }
                 filmsAdapter.addItems(result)
