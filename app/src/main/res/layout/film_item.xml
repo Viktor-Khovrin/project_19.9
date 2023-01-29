@@ -18,13 +18,13 @@
         app:layout_constraintRight_toRightOf="parent"/>
 
     <androidx.cardview.widget.CardView
-    android:id="@+id/item_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="10dp"
     android:elevation="1dp"
     app:cardCornerRadius="10dp">
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/item_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -35,7 +35,8 @@
             android:scaleType="centerCrop"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:src="@tools:sample/avatars" />
+            tools:src="@tools:sample/avatars"
+            android:contentDescription="@strings/description" />
 
         <TextView
             android:id="@+id/title"
