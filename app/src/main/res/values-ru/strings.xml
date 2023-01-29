@@ -8,4 +8,5 @@
     <string name="menu_favorites_title">Избранное</string>
     <string name="menu_watch_later_title">Посмотреть позже</string>
     <string name="on_back_pressed">Нажмите дважды для выхода</string>
+    <string name="description">Image View</string>
 </resources>
