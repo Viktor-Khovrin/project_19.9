@@ -54,8 +54,7 @@ class RatingDonutView @JvmOverloads constructor(context: Context, attributeSet: 
     override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
         radius = if (width > height) {
             height.div(2f)
-        }
-        else {
+        } else {
             width.div(2f)
         }
     }
