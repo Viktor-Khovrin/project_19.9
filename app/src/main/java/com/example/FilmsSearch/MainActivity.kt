@@ -3,6 +3,7 @@ package com.example.FilmsSearch
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -12,7 +13,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        getSupportActionBar()?.hide()
+        supportActionBar?.hide()
         initNavigation()
         supportFragmentManager
             .beginTransaction()
@@ -36,15 +37,21 @@ class MainActivity : AppCompatActivity() {
         bottom_navigation.setOnNavigationItemSelectedListener{
             when (it.itemId) {
                 R.id.favorites -> {
-                    supportFragmentManager
+            /*        supportFragmentManager
                         .beginTransaction()
                         .replace(R.id.fragment_placeholder, FavoritesFragment())
                         .addToBackStack(null)
-                        .commit()
+                        .commit()*/
+                val tag = "favorites"
+                val fragment = checkFragmentExistence(tag)
+                changeFragment( fragment?: FavoritesFragment(), tag)
                     true
                 }
                 R.id.selections -> {
-                    Toast.makeText(this,R.string.menu_selections_title, Toast.LENGTH_SHORT).show()
+                    /*Toast.makeText(this,R.string.menu_selections_title, Toast.LENGTH_SHORT).show()*/
+                    val tag = "selections"
+                    val fragment = checkFragmentExistence(tag)
+                    changeFragment( fragment?: DetailsFragment(), tag)
                     true
                 }
                 R.id.watch_later -> {
@@ -54,6 +61,16 @@ class MainActivity : AppCompatActivity() {
                 else -> false
             }
         }
+    }
+
+    private fun checkFragmentExistence(tag: String): Fragment? = supportFragmentManager.findFragmentByTag(tag)
+
+    private fun changeFragment(fragment: Fragment, tag: String) {
+        supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.fragment_placeholder, fragment, tag)
+            .addToBackStack(null)
+            .commit()
     }
 
     override fun onBackPressed(){

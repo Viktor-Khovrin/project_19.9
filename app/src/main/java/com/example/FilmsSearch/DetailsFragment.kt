@@ -10,7 +10,6 @@ import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.fragment_details.*
 
 class DetailsFragment : Fragment() {
-    private lateinit var film: Film
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -37,12 +36,12 @@ class DetailsFragment : Fragment() {
         )
 
         details_fab_favorites.setOnClickListener{
-            if (!film.isInFavorites){
+            if (film.isInFavorites){
                 details_fab_favorites.setImageResource(R.drawable.ic_baseline_favorite_border_24)
-                film.isInFavorites = true
+                film.isInFavorites = false
             }else{
                 details_fab_favorites.setImageResource(R.drawable.ic_baseline_favorite_24)
-                film.isInFavorites = false
+                film.isInFavorites = true
             }
         }
 

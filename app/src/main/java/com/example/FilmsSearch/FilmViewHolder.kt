@@ -12,7 +12,6 @@ class FilmViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     private val ratingDonut = itemView.rating_donut
     fun bind(film: Film){
         title.text = film.title
-        //poster.setImageResource(film.poster)
         Glide.with(itemView)
             .load(film.poster)
             .centerCrop()
