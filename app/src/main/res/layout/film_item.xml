@@ -7,9 +7,9 @@
 
     <com.example.FilmsSearch.RatingDonutView
         android:id="@+id/rating_donut"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:translationZ="11dp"
+        android:layout_width="@dimen/donat_dimen"
+        android:layout_height="@dimen/donat_dimen"
+        android:translationZ="@dimen/donat_textZ"
         app:stroke="10"
         app:progress="77"
         android:layout_gravity="bottom|start"
