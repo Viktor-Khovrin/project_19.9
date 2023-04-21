@@ -5,18 +5,16 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.FilmsSearch.databinding.ActivityMainBinding
-import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
-    private var time_pressed = 0L
+    private var timePressed = 0L
     private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        setContentView(R.layout.activity_main)
         supportActionBar?.hide()
         initNavigation()
         supportFragmentManager
@@ -38,7 +36,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initNavigation(){
-        bottom_navigation.setOnNavigationItemSelectedListener{
+        binding.bottomNavigation.setOnNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.favorites -> {
             /*        supportFragmentManager
@@ -77,14 +75,15 @@ class MainActivity : AppCompatActivity() {
             .commit()
     }
 
+    @Deprecated("Deprecated in Java")
     override fun onBackPressed(){
         if (supportFragmentManager.backStackEntryCount == 0){
-            if (time_pressed + BACK_PRESSED_TIMEOUT > System.currentTimeMillis()){
+            if (timePressed + BACK_PRESSED_TIMEOUT > System.currentTimeMillis()){
                 super.onBackPressed()
                 finish()
             }else {
                 Toast.makeText(this, R.string.on_back_pressed, Toast.LENGTH_SHORT).show()
-                time_pressed = System.currentTimeMillis()
+                timePressed = System.currentTimeMillis()
             }
         }else{
             super.onBackPressed()
