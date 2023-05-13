@@ -1,4 +1,4 @@
-package com.example.FilmsSearch
+package com.example.filmsSearch
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.FilmsSearch.databinding.FragmentFavoritesBinding
+import com.example.filmsSearch.databinding.FragmentFavoritesBinding
 
 class FavoritesFragment : Fragment() {
     private lateinit var filmsAdapter: FilmListRecyclerAdapter

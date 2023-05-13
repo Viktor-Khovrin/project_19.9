@@ -1,20 +1,20 @@
-package com.example.FilmsSearch
+package com.example.filmsSearch
 
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import com.example.FilmsSearch.databinding.ActivityMainBinding
+import com.example.filmsSearch.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
     private var timePressed = 0L
-    private lateinit var binding: ActivityMainBinding
+    private lateinit var mainBinding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        mainBinding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(mainBinding.root)
         supportActionBar?.hide()
         initNavigation()
         supportFragmentManager
@@ -36,7 +36,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initNavigation(){
-        binding.bottomNavigation.setOnNavigationItemSelectedListener {
+        mainBinding.bottomNavigation.setOnNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.favorites -> {
             /*        supportFragmentManager

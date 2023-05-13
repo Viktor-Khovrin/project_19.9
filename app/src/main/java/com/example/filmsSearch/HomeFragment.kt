@@ -1,4 +1,4 @@
-package com.example.FilmsSearch
+package com.example.filmsSearch
 
 import android.os.Bundle
 import android.transition.Scene
@@ -12,9 +12,7 @@ import android.view.ViewGroup
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.FilmsSearch.databinding.FragmentHomeBinding
-import kotlinx.android.synthetic.main.fragment_home.*
-import kotlinx.android.synthetic.main.merge_home_screen_content.*
+import com.example.filmsSearch.databinding.MergeHomeScreenContentBinding
 import java.util.*
 
 val filmsDataBase = listOf(
@@ -29,7 +27,8 @@ val filmsDataBase = listOf(
 )
 
 class HomeFragment : Fragment() {
-    private lateinit var binding: FragmentHomeBinding
+//    private lateinit var binding: FragmentHomeBinding
+    private lateinit var binding: MergeHomeScreenContentBinding
     private lateinit var filmsAdapter: FilmListRecyclerAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -38,7 +37,7 @@ class HomeFragment : Fragment() {
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val scene=Scene.getSceneForLayout(home_fragment_root, R.layout.merge_home_screen_content,requireContext())
+        val scene=Scene.getSceneForLayout(binding.root, R.layout.merge_home_screen_content,requireContext())
         val searchSlide = Slide(Gravity.TOP).addTarget(R.id.search_view)
         val recyclerSlide = Slide(Gravity.BOTTOM).addTarget(R.id.main_recycler)
         val customTransition = TransitionSet().apply {
@@ -54,13 +53,14 @@ class HomeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding= FragmentHomeBinding.inflate(inflater, container, false)
+//        binding= FragmentHomeBinding.inflate(inflater, container, false)
+        binding= MergeHomeScreenContentBinding.inflate(inflater)//, container, false)
         return binding.root
         // Inflate the layout for this fragment
         //return inflater.inflate(R.layout.fragment_home, container, false)
     }
     private fun initRecyclerView() {
-        main_recycler.apply {
+         binding.mainRecycler.apply {
             filmsAdapter = FilmListRecyclerAdapter(object : FilmListRecyclerAdapter.OnItemClickListener{
                 override fun click(film: Film) {
                     (requireActivity() as MainActivity).launchDetailsFragment(film)
@@ -74,11 +74,11 @@ class HomeFragment : Fragment() {
 
         filmsAdapter.addItems(filmsDataBase)
 
-        search_view.setOnClickListener{
-            search_view.isIconified = false
+        binding.searchView.setOnClickListener{
+            binding.searchView.isIconified = false
         }
 
-        search_view.setOnQueryTextListener(object: SearchView.OnQueryTextListener{
+        binding.searchView.setOnQueryTextListener(object: SearchView.OnQueryTextListener{
             override fun onQueryTextSubmit(query: String?): Boolean {
                 return true
             }

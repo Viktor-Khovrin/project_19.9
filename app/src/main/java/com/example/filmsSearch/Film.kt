@@ -1,4 +1,4 @@
-package com.example.FilmsSearch
+package com.example.filmsSearch
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize

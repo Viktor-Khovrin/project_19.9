@@ -1,4 +1,4 @@
-package com.example.FilmsSearch
+package com.example.filmsSearch
 
 import android.content.Intent
 import android.os.Bundle
@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.example.FilmsSearch.databinding.FragmentDetailsBinding
+import com.example.filmsSearch.databinding.FragmentDetailsBinding
 
 class DetailsFragment : Fragment() {
     private lateinit var binding: FragmentDetailsBinding
