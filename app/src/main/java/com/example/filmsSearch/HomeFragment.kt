@@ -1,10 +1,6 @@
 package com.example.filmsSearch
 
 import android.os.Bundle
-import android.transition.Scene
-import android.transition.Slide
-import android.transition.TransitionManager
-import android.transition.TransitionSet
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
@@ -12,8 +8,12 @@ import android.view.ViewGroup
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.filmsSearch.databinding.MergeHomeScreenContentBinding
-import java.util.*
+import androidx.transition.Scene
+import androidx.transition.Slide
+import androidx.transition.TransitionManager
+import androidx.transition.TransitionSet
+import com.example.filmsSearch.databinding.FragmentHomeBinding
+import java.util.Locale
 
 val filmsDataBase = listOf(
     Film("Stranger Things", R.drawable.stranger_things, "When a young boy disappears, his mother, a police chief and his friends must confront terrifying supernatural forces in order to get him back", 6.5f),
@@ -28,16 +28,23 @@ val filmsDataBase = listOf(
 
 class HomeFragment : Fragment() {
 //    private lateinit var binding: FragmentHomeBinding
-    private lateinit var binding: MergeHomeScreenContentBinding
+    private var bindingHome: FragmentHomeBinding? = null
+    private val binding get() = bindingHome!!
     private lateinit var filmsAdapter: FilmListRecyclerAdapter
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        retainInstance = true
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+//        binding= FragmentHomeBinding.inflate(inflater, container, false)
+        bindingHome = FragmentHomeBinding.inflate(inflater, container, false)
+        return binding.root
+        // Inflate the layout for this fragment
+        //return inflater.inflate(R.layout.fragment_home, container, false)
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val scene=Scene.getSceneForLayout(binding.root, R.layout.merge_home_screen_content,requireContext())
+        val scene= Scene.getSceneForLayout(binding.homeFragmentRoot, R.layout.fragment_home,requireContext())
         val searchSlide = Slide(Gravity.TOP).addTarget(R.id.search_view)
         val recyclerSlide = Slide(Gravity.BOTTOM).addTarget(R.id.main_recycler)
         val customTransition = TransitionSet().apply {
@@ -48,19 +55,13 @@ class HomeFragment : Fragment() {
         TransitionManager.go(scene, customTransition)
         initRecyclerView()
     }
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-//        binding= FragmentHomeBinding.inflate(inflater, container, false)
-        binding= MergeHomeScreenContentBinding.inflate(inflater)//, container, false)
-        return binding.root
-        // Inflate the layout for this fragment
-        //return inflater.inflate(R.layout.fragment_home, container, false)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        retainInstance = true
     }
+
     private fun initRecyclerView() {
-         binding.mainRecycler.apply {
+         bindingHome?.mainRecycler?.apply {
             filmsAdapter = FilmListRecyclerAdapter(object : FilmListRecyclerAdapter.OnItemClickListener{
                 override fun click(film: Film) {
                     (requireActivity() as MainActivity).launchDetailsFragment(film)
@@ -97,6 +98,11 @@ class HomeFragment : Fragment() {
                 return true
             }
         })
+    }
+
+    override fun onDestroyView() {
+        bindingHome = null
+        super.onDestroyView()
     }
     companion object{
         private const val DECORATION_PADDING = 8

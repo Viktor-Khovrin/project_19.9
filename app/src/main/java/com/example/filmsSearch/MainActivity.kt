@@ -39,11 +39,11 @@ class MainActivity : AppCompatActivity() {
         mainBinding.bottomNavigation.setOnNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.favorites -> {
-            /*        supportFragmentManager
-                        .beginTransaction()
-                        .replace(R.id.fragment_placeholder, FavoritesFragment())
-                        .addToBackStack(null)
-                        .commit()*/
+//                    supportFragmentManager
+//                        .beginTransaction()
+//                        .replace(R.id.fragment_placeholder, FavoritesFragment())
+//                        .addToBackStack(null)
+//                        .commit()
                 val tag = "favorites"
                 val fragment = checkFragmentExistence(tag)
                 changeFragment( fragment?: FavoritesFragment(), tag)

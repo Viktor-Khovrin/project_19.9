@@ -6,11 +6,11 @@ import com.example.filmsSearch.databinding.FilmItemBinding
 
 //import kotlinx.android.synthetic.main.film_item.view.*
 
-class FilmViewHolder(itemView: FilmItemBinding) : RecyclerView.ViewHolder(itemView.root) {
-    private val title = itemView.title
-    private val poster = itemView.poster
-    private val description = itemView.description
-    private val ratingDonut = itemView.ratingDonut
+class FilmViewHolder(val binding: FilmItemBinding) : RecyclerView.ViewHolder(binding.root) {
+    private val title = binding.title
+    private val poster = binding.poster
+    private val description = binding.description
+    private val ratingDonut = binding.ratingDonut
     fun onBind(film: Film){
         title.text = film.title
         Glide.with(itemView)

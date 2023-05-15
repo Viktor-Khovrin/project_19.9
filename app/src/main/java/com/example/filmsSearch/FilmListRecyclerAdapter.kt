@@ -10,14 +10,14 @@ import com.example.filmsSearch.databinding.FilmItemBinding
 class FilmListRecyclerAdapter(private val clickListener: OnItemClickListener):
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 //    inner class ViewHolder(val binding: FilmItemBinding):RecyclerView.ViewHolder(binding.root)
-    private lateinit var binding: FilmItemBinding
+//    private lateinit var binding: FilmItemBinding
     private val items = mutableListOf<Film>()
 
     override fun getItemCount() = items.size
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
 //        return FilmViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.film_item, parent, false))
-        binding = FilmItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding = FilmItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return FilmViewHolder(binding)
     }
 
@@ -25,7 +25,7 @@ class FilmListRecyclerAdapter(private val clickListener: OnItemClickListener):
         when (holder){
             is FilmViewHolder -> {
                 holder.onBind(items[position])
-                holder.itemView.setOnClickListener {clickListener.click(items[position])}
+                holder.binding.itemContainer.setOnClickListener {clickListener.click(items[position])}
 //                {
 //                    itemView.item_container.setOnClickListener{
 //                        clickListener.click(items[position])
