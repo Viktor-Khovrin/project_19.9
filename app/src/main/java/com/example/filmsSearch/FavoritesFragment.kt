@@ -10,12 +10,13 @@ import com.example.filmsSearch.databinding.FragmentFavoritesBinding
 
 class FavoritesFragment : Fragment() {
     private lateinit var filmsAdapter: FilmListRecyclerAdapter
-    private lateinit var binding: FragmentFavoritesBinding
+    private var bindingFavirites: FragmentFavoritesBinding? = null
+    private val binding get() = bindingFavirites!!
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        binding = FragmentFavoritesBinding.inflate(inflater, container, false)
+    ): View {
+        bindingFavirites = FragmentFavoritesBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -38,4 +39,8 @@ class FavoritesFragment : Fragment() {
         filmsAdapter.addItems(result)
     }
 
+    override fun onDestroyView() {
+        bindingFavirites = null
+        super.onDestroyView()
+    }
 }

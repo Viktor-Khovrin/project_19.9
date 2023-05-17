@@ -35,7 +35,7 @@ class HomeFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 //        binding= FragmentHomeBinding.inflate(inflater, container, false)
         bindingHome = FragmentHomeBinding.inflate(inflater, container, false)
         return binding.root
@@ -44,15 +44,17 @@ class HomeFragment : Fragment() {
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val scene= Scene.getSceneForLayout(binding.homeFragmentRoot, R.layout.fragment_home,requireContext())
-        val searchSlide = Slide(Gravity.TOP).addTarget(R.id.search_view)
-        val recyclerSlide = Slide(Gravity.BOTTOM).addTarget(R.id.main_recycler)
+        val sceneRoot = Scene(binding.homeFragmentRoot)
+//        val sceneRoot = Scene.getSceneForLayout(binding.root,R.layout.fragment_home,requireContext())
+//        val scene= Scene.getSceneForLayout(binding.homeFragmentRoot, R.layout.fragment_home,requireContext())
+        val searchSlide = Slide(Gravity.TOP).addTarget(binding.searchView)
+        val recyclerSlide = Slide(Gravity.BOTTOM).addTarget(binding.mainRecycler)
         val customTransition = TransitionSet().apply {
             duration = 500
             addTransition(recyclerSlide)
             addTransition(searchSlide)
         }
-        TransitionManager.go(scene, customTransition)
+        TransitionManager.go(sceneRoot, customTransition)
         initRecyclerView()
     }
     override fun onCreate(savedInstanceState: Bundle?) {
